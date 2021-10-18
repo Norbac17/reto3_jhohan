@@ -32,6 +32,7 @@ public class Reservation implements Serializable {
     private Date startDate;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolutionDate;
+    
     private String status = "created";
     
     @ManyToOne
@@ -47,7 +48,6 @@ public class Reservation implements Serializable {
     @OneToOne
     @JsonIgnoreProperties("reservation")
     private Score score;
-    
 
     public Integer getIdReservation() {
         return idReservation;
@@ -73,7 +73,6 @@ public class Reservation implements Serializable {
         this.devolutionDate = devolutionDate;
     }
 
-    
     public String getStatus() {
         return status;
     }
@@ -82,12 +81,12 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public Score getScore() {
-        return score;
+    public Skate getSkate() {
+        return skate;
     }
 
-    public void setScore(Score score) {
-        this.score = score;
+    public void setSkate(Skate skate) {
+        this.skate = skate;
     }
 
     public Client getClient() {
@@ -98,12 +97,12 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public Skate getSkate() {
-        return skate;
+    public Score getScore() {
+        return score;
     }
 
-    public void setSkate(Skate skate) {
-        this.skate = skate;
+    public void setScore(Score score) {
+        this.score = score;
     }
     
 

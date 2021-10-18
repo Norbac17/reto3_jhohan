@@ -3,6 +3,7 @@ package reto3_jhohan.reto3_jhohan.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 
 /**
@@ -26,8 +28,10 @@ public class Reservation implements Serializable {
     
     private Integer idReservation;
     
-    private String startDate;
-    private String devolutionDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date devolutionDate;
     private String status = "created";
     
     @ManyToOne
@@ -53,22 +57,23 @@ public class Reservation implements Serializable {
         this.idReservation = idReservation;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(String devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
+    
     public String getStatus() {
         return status;
     }

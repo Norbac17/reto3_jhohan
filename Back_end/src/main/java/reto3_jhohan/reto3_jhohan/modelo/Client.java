@@ -30,14 +30,14 @@ public class Client implements Serializable {
 
     private Integer idClient;
     
-    @Column(length = 250)
-    private String name;
-    
     @Column(length = 45)
     private String email;
     
     @Column(length = 45)
     private String password;
+    
+    @Column(length = 250)
+    private String name;
     
     private Integer age;
     
@@ -56,7 +56,7 @@ public class Client implements Serializable {
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
     }
-    
+
     public String getEmail() {
         return email;
     }
@@ -72,7 +72,7 @@ public class Client implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -105,5 +105,6 @@ public class Client implements Serializable {
         this.reservations = reservations;
     }
 
+    
     
 }

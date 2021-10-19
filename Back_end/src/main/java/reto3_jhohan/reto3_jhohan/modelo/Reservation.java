@@ -28,9 +28,7 @@ public class Reservation implements Serializable {
     
     private Integer idReservation;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolutionDate;
     
     private String status = "created";

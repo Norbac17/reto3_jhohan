@@ -41,4 +41,43 @@ public class ServiciosReservation {
             }
         }
     }
+    public Reservation update(Reservation reservation){
+        if (reservation.getIdReservation()!=null) {
+            Optional<Reservation> e=metodosCrud.getReservation(reservation.getIdReservation());
+            if (!e.isEmpty()) {
+                if(reservation.getStartDate()!=null) {
+                    e.get().setStartDate(reservation.getStartDate());
+                }
+                if(reservation.getDevolutionDate()!=null) {
+                    e.get().setDevolutionDate(reservation.getDevolutionDate());
+                }
+                if(reservation.getStatus()!=null) {
+                    e.get().setStatus(reservation.getStatus());
+                }
+                if(reservation.getSkate()!=null) {
+                    e.get().setSkate(reservation.getSkate());
+                }
+                if(reservation.getClient()!=null) {
+                    e.get().setClient(reservation.getClient());
+                }
+                if(reservation.getScore()!=null) {
+                    e.get().setScore(reservation.getScore());
+                }
+                metodosCrud.save(e.get());
+                return e.get();
+            }
+            else{
+                return reservation;
+            }
+            
+        }
+        return reservation;
+    }
+    public boolean deleteReservation(int reservationId){
+        Boolean d = getReservation(reservationId).map(reservation ->{
+            metodosCrud.delete(reservation);
+            return true;
+        }).orElse(false);
+        return d;
+    }
 }

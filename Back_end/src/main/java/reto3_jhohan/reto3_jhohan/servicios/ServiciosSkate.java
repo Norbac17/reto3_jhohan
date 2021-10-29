@@ -40,4 +40,40 @@ public class ServiciosSkate {
             }
         }
     }
+    public Skate update(Skate skate){
+        if (skate.getId()!=null) {
+            Optional<Skate> e=metodosCrud.getSkate(skate.getId());
+            if (!e.isEmpty()) {
+                if(skate.getName()!=null) {
+                    e.get().setName(skate.getName());
+                }
+                if(skate.getBrand()!=null) {
+                    e.get().setBrand(skate.getBrand());
+                }
+                if(skate.getYear()!=null) {
+                    e.get().setYear(skate.getYear());
+                }
+                if(skate.getDescription()!=null) {
+                    e.get().setDescription(skate.getDescription());
+                }
+                if(skate.getCategory()!=null) {
+                    e.get().setCategory(skate.getCategory());
+                }
+                metodosCrud.save(e.get());
+                return e.get();
+            }
+            else{
+                return skate;
+            }
+            
+        }
+        return skate;
+    }
+    public boolean deleteSkate(int skateId){
+        Boolean d = getSkate(skateId).map(skate ->{
+            metodosCrud.delete(skate);
+            return true;
+        }).orElse(false);
+        return d;
+    }
 }

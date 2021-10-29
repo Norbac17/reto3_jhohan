@@ -41,8 +41,27 @@ public class ServiciosScore {
             }
         }
     }
-
-    public Optional<Score> getCategory(int idCategory) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Score update(Score score){
+        if (score.getId()!=null) {
+            Optional<Score> e=metodosCrud.getScore(score.getId());
+            if (!e.isEmpty()) {
+                if(score.getScore()!=null) {
+                    e.get().setScore(score.getScore());
+                }
+                return e.get();
+            }
+            else{
+                return score;
+            }
+            
+        }
+        return score;
+    }
+    public boolean deleteScore(int scoreId){
+        Boolean d = getScore(scoreId).map(score ->{
+            metodosCrud.delete(score);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }
